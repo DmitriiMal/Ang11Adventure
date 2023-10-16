@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -25,11 +26,24 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  info = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    age: new FormControl(''),
+    email: new FormControl(''),
+  });
 
   countClick() {
     this.clickCounter++;
   }
+  constructor() {}
 
   ngOnInit(): void {}
+
+  onSubmit() {
+    if (this.info.valid) {
+      let a = this.info.value;
+      console.log(a);
+    }
+  }
 }
